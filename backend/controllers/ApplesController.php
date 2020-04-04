@@ -70,8 +70,6 @@ class ApplesController extends Controller
         ]);
 
         return $this->render('index', [
-            'ApplesGenerateForm' => new ApplesGenerateForm(),
-            'AppleEatForm' => new AppleEatForm(),
             'dataProvider' => $dataProvider,
         ]);
     }

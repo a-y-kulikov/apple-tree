@@ -1,8 +1,8 @@
 <?php
 
-use backend\models\AppleEatForm;
-use backend\models\ApplesGenerateForm;
+use backend\widgets\AppleEatWidget;
 use backend\models\Apples;
+use backend\widgets\ApplesGenerateWidget;
 use common\widgets\Alert;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -12,8 +12,6 @@ use yii\widgets\Pjax;
 /**
  * @var yii\web\View $this
  * @var $dataProvider
- * @var AppleEatForm $AppleEatForm  
- * @var ApplesGenerateForm $ApplesGenerateForm
  */
 
 $this->title = 'Apples List';
@@ -59,10 +57,9 @@ $this->title = 'Apples List';
                                 'down' => function ($url, Apples $model) {
                                     return Html::a('Down', $url, ['class' => 'btn btn-warning']);
                                 },
-                                'eat' => function ($url, Apples $model) use ($AppleEatForm) {
-                                    return $this->render('//apples/_eat-form', [
-                                        'apple' => $model,
-                                        'model' => clone $AppleEatForm
+                                'eat' => function ($url, Apples $model) {
+                                    return AppleEatWidget::widget([
+                                        'apple' => $model
                                     ]);
                                 },
                                 'delete' => function ($url, Apples $model) {
@@ -92,7 +89,7 @@ $this->title = 'Apples List';
                 <?php Pjax::end(); ?>
             </div>
             <div class="col-sm-4">
-                <?= $this->render('//apples/_generate-form', ['model' => $ApplesGenerateForm]); ?>
+                <?= ApplesGenerateWidget::widget(); ?>
             </div>
         </div>
 
