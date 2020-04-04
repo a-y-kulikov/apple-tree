@@ -1,3 +1,10 @@
+Instructions
+
+* > composer install
+* > php init --env=Development --overwrite=all
+* > php yii migrate/up
+* Login to backend root:qwerty123456
+
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
